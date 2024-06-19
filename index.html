@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital-Mente</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url("wallpapersden.com_cool-red-mountains-4k_2560x1440.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #0a7235;
+        }
+
+        /* Estilos para la cabecera */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        header h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 1rem;
+            transition: transform 0.3s, color 0.3s, opacity 0.3s;
+            opacity: 1;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        header nav ul li:hover {
+            transform: scale(1.1);
+            color: #f4f4f4;
+            opacity: 0.7;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li:hover a {
+            color: #f4f4f4;
+        }
+
+        /* Menú desplegable para móviles */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 4px;
+            transition: all 0.3s;
+        }
+
+        nav.active ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #333;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Animación para los elementos del menú */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Contenedor principal */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: center;
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .image-gallery img {
+            width: 150px;
+            height: 150px;
+            margin: 0 1rem;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .blob-1 {
+            clip-path: polygon(50% 0%, 100% 38%, 79% 100%, 21% 100%, 0% 38%);
+        }
+
+        .blob-2 {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .blob-3 {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+        }
+
+        .blob-4 {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+        }
+
+        /* Estilos para el contenido principal */
+        main {
+            flex: 1;
+            padding: 2rem;
+            background: rgba(241, 236, 236, 0);
+            margin: 1rem auto;
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+            color: rgb(33, 90, 139);
+        }
+
+        main h2 {
+            margin-bottom: 1rem;
+        }
+
+        main p {
+            line-height: 1.6;
+        }
+
+        /* Animaciones de entrada */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInAnimation 1s ease forwards;
+        }
+
+        .slide-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInAnimation 0.5s ease forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            background: #3f6d9c;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            filter: invert(100%);
+        }
+
+        /* Botón de scroll-to-top */
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #scrollToTop:hover {
+            background: #555;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-gallery {
+                flex-wrap: wrap;
+            }
+
+            .image-gallery img {
+                width: 100px;
+                height: 100px;
+                margin: 0.5rem;
+            }
+
+            main {
+                padding: 1rem;
+                margin: 1rem;
+            }
+        }
+
+        /* CSS adicional para el bloque de texto */
+        .text-block {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInAnimation 1s ease forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            background-color: whitesmoke;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        #centrealo {
+            text-align: center;
+        }
+
+        .event-section {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            margin: 1rem auto;
+            max-width: 700px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .event-section h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .event {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .event img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .event img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            margin: 1rem 0 0.5rem;
+            text-align: center;
+        }
+
+        .event-description {
+            font-size: 1rem;
+            text-align: center;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .event img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+    <link rel="icon" type="image"
+        href="https://scontent.flpb1-2.fna.fbcdn.net/v/t39.30808-1/272764411_1119160732246558_8990868702955234015_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=H7Zb9p861wgQ7kNvgFn-BaN&_nc_ht=scontent.flpb1-2.fna&oh=00_AYC9cQn_4cI0pRd6MfprTI98o5JZ4hUwvrHqAeFidO5A2A&oe=666D95F0">
+</head>
+
+<body>
+    <header>
+        <h1>Vital - Mente</h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pagina2.html">Sobre Nosotros</a></li>
+                <li><a href="pagina3.html">Servicios</a></li>
+                <li><a href="pagina4.html">Horarios</a></li>
+                <li><a href="pagina5.html">Reuniones y Eventos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-wrapper">
+        <aside class="image-gallery">
+            <img src="https://terapiaapsicologica.com/wp-content/uploads/2020/12/Psychologist-bro.png" alt="Imagen 1"
+                class="blob-1">
+            <img src="https://cdn.prod.website-files.com/6165ed3d14364c72a597fe4e/63f83f3ca582987dfdafb975_Imagen%20hablando.jpg"
+                alt="Imagen 2" class="blob-2">
+            <img src="https://fotografias.larazon.es/clipping/cmsimages02/2020/03/28/DE3BC88F-4372-42EC-B5D8-5B00C7A1B706/98.jpg?crop=960,540,x0,y49&width=1900&height=1069&optimize=low&format=webply"
+                alt="Imagen 3" class="blob-3">
+            <img src="https://marketingalternativobtl.com/wp-content/uploads/2022/08/secretos-psicologia.jpg"
+                alt="Imagen 4" class="blob-4">
+        </aside>
+
+        <main>
+            <h2 class="fade-in">¡Bienvenido a Vital - Mente!</h2>
+            <div id="centrealo" class="text-block fade-in">
+                <p>Somos tu centro de atención y terapia psicológica. <br>Aquí encontrarás el apoyo y la orientación que
+                    necesitas para resolver tus problemas y mejorar tu bienestar emocional. <br>Donde encontrarás la
+                    ayuda que necesitas para una vida plena y feliz. <br>Nuestro equipo de expertos está dedicado a
+                    ofrecerte las mejores terapias personalizadas.</p>
+                <p>Nuestro enfoque integral combina técnicas tradicionales y modernas para proporcionar una atención
+                    completa y personalizada.<br> Ofrecemos terapias individuales, de pareja y grupales, adaptadas a tus
+                    necesidades específicas.<br> Creemos en el poder de la mente y el cuerpo para sanar y crecer. <br>Te
+                    acompañamos en cada paso de tu camino hacia una vida más saludable y feliz.</p>
+            </div>
+        </main>
+    </div>
+    <section class="event-section">
+        <h2>Eventos Pasados</h2>
+
+        <div class="event">
+            <img src="CongresoAepsi.jpg" alt="Evento 1">
+            <div class="event-title">Congreso Aepsis 2021</div>
+            <div class="event-description">Congreso internacional de psicología AEPSIS - PERU
+                Ponente - Presentación del programa de orientación vocacional "Tomando la responsabilidad de mi futuro".</div>
+        </div>
+
+        <div class="event">
+            <img src="TallerCIES.jpg" alt="Evento 2">
+            <div class="event-title">Taller: Ansiedad y flexibilidad psicológica - CIES</div>
+            <div class="event-description">Expositor en el Taller sobre ansiedad y flexibilidad psicológica en la Red tú decides de El Alto - 2024</div>
+        </div>
+
+        <div class="event">
+            <img src="TallerAdolDelinc.jpg" alt="Evento 3">
+            <div class="event-title">Taller: adolescencia y delincuencia 2023 Universidad Franz Tamayo</div>
+            <div class="event-description">Tallerista en el seminario sobre intervención psicosocial en la Universidad Privada Franz Tamayo 2023.</div>
+        </div>
+
+        <div class="event">
+            <img src="PremiacionColPsi.jpg" alt="Evento 4">
+            <div class="event-title">Premiación: Colegio de psicólogos 2022</div>
+            <div class="event-description">Premiado como pasante destacado en el área de psicología clínica. Premiación aniversario del colegio de psicólogos 2022</div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer">
+            <a href="https://www.facebook.com/profile.php?id=100031962143298" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Logo_Facebook_Blanco.png/640px-Logo_Facebook_Blanco.png"
+                    alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/vital_mentepodcast/?igsh=bHc0cTlsczFudXpw" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CIS-A2K_Instagram_Icon_%28Black%29.svg/640px-CIS-A2K_Instagram_Icon_%28Black%29.svg.png"
+                    alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com/@vitalmente3?_t=8mwxnmi2umL&_r=1" target="_blank">
+                <img src="tik-tok.png" alt="TikTok">
+            </a>
+            <a href="https://wa.me/59160100110?text=Hola%2C%20Me%20gustaría%20información%20de%20las%20consultas
+            " target="_blank">
+                <img src="toppng.com-white-whatsapp-n-256x256.png" alt="TikTok">
+            </a>
+        </div>
+    </footer>
+
+    <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="musicadefondo.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    </script>
+    <script>
+        function checkBackgroundMusic() {
+            const isMusicPlaying = localStorage.getItem('backgroundMusicPlaying');
+            if (isMusicPlaying === 'true') {
+                backgroundMusic.play();
+            }
+        }
+        window.addEventListener('load', function () {
+            checkBackgroundMusic();
+        });
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                localStorage.setItem('backgroundMusicPlaying', backgroundMusic.paused ? 'false' : 'true');
+                backgroundMusic.pause();
+            } else {
+                checkBackgroundMusic();
+            }
+        });
+
+    </script>
+</body>
+
+</html>

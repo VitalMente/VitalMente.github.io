@@ -1,0 +1,170 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('https://i.pinimg.com/564x/44/31/25/4431252ea84a5b23f8653815ab94e6a7.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #0a7235;
+}
+
+/* Estilos para la cabecera */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 1rem;
+    transition: transform 0.3s, color 0.3s, opacity 0.3s;
+    opacity: 1;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+header nav ul li:hover {
+    transform: scale(1.1);
+    color: #f4f4f4;
+    opacity: 0.7;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li:hover a {
+    color: #f4f4f4;
+}
+
+/* Animación para los elementos del menú */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Contenedor principal */
+.content-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+/* Galería de imágenes */
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.image-gallery img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.blob-1 {
+    clip-path: polygon(50% 0%, 100% 38%, 79% 100%, 21% 100%, 0% 38%);
+}
+
+.blob-2 {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.blob-3 {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+}
+.blob-4 {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+}
+/* Estilos para el contenido principal */
+main {
+    flex: 1;
+    padding: 2rem;
+    background: #f1ecec00;
+    margin: 1rem auto;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+    color:rgb(33, 90, 139);
+}
+
+main h2 {
+    margin-bottom: 1rem;
+}
+
+main p {
+    line-height: 1.6;
+}
+
+/* Estilos para el pie de página */
+footer {
+    background: #3f6d9c;
+    /* azul marino */
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.footer a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    filter: invert(100%);
+}

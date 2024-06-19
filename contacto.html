@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/jpeg">
+    <style>
+        body {
+            background-image: url("134824.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Estilos para la cabecera */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        header h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 1rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        header nav ul li:hover {
+            transform: scale(1.1);
+            color: #f4f4f4;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li:hover a {
+            color: #f4f4f4;
+        }
+
+        /* Estilos para el contenido principal */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 2rem;
+            background: #1a242e;
+            margin: 1rem auto;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .content-wrapper h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: whitesmoke;
+        }
+
+        .content-wrapper p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .content-wrapper .ceo {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Estilos para el contenedor de contacto */
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-direction: column; /* Default to column layout */
+        }
+
+        /* Estilos para el mapa */
+        .map-container {
+            flex: 1;
+            padding-right: 1rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* Estilos para el formulario */
+        .form-container {
+            flex: 1;
+            background: whitesmoke;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="tel"],
+        .form-container input[type="email"],
+        .form-container input[type="checkbox"],
+        .form-container .captcha-container {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container input[type="checkbox"] {
+            width: auto;
+        }
+
+        .form-container button {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #1A252F;
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            background: #2C3E50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            filter: invert(100%);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 4px;
+            transition: all 0.3s;
+        }
+
+        nav.active ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 769px) {
+            .contact-container {
+                flex-direction: row; /* Switch to row layout on larger screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #333;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Vital - Mente</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pagina2.html">Sobre Nosotros</a></li>
+                <li><a href="pagina3.html">Servicios</a></li>
+                <li><a href="pagina4.html">Horarios</a></li>
+                <li><a href="pagina5.html">Reuniones y Eventos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-wrapper">
+        <h2>Psicología Efectiva a tu Alcance</h2>
+        <h2>Contacto</h2>
+        <div class="contact-container">
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3825.1042600716523!2d-68.21288052400716!3d-16.520833284226086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDMxJzE1LjAiUyA2OMKwMTInMzcuMSJX!5e0!3m2!1ses-419!2sbo!4v1718207210375!5m2!1ses-419!2sbo"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+            <div class="form-container">
+                <h3>Contáctanos</h3>
+                <form action="https://formsubmit.co/formulariocontactanosvm@gmail.com" method="POST">
+                    <label for="name">Nombre (requerido)</label>
+                    <input type="text" id="name" name="Nombre" required>
+                    <label for="phone">Teléfono (requerido)</label>
+                    <input type="tel" id="phone" name="Teléfono" required>
+                    <label for="email">Email (opcional)</label>
+                    <input type="email" id="email" name="Correo electrónico">
+                    <label for="privacy">
+                        <input type="checkbox" id="privacy" name="privacy" required> He leído y acepto la <a
+                            href="privacidad.html">Política de privacidad</a>
+                    </label>
+                    <div class="captcha-container">
+                        <label for="captcha">Introduzca su consulta</label>
+                        <input type="text" id="captcha" name="Consulta" required>
+                    </div>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <a href="https://www.facebook.com/profile.php?id=100031962143298" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Logo_Facebook_Blanco.png/640px-Logo_Facebook_Blanco.png"
+                    alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/vital_mentepodcast/?igsh=bHc0cTlsczFudXpw" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CIS-A2K_Instagram_Icon_%28Black%29.svg/640px-CIS-A2K_Instagram_Icon_%28Black%29.svg.png"
+                    alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com/@vitalmente3?_t=8mwxnmi2umL&_r=1" target="_blank">
+                <img src="tik-tok.png" alt="TikTok">
+            </a>
+            <a href="https://wa.me/59160100110?text=Hola%2C%20Me%20gustaría%20información%20de%20las%20consultas
+            " target="_blank">
+                <img src="toppng.com-white-whatsapp-n-256x256.png" alt="WhatsApp">
+            </a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const contactForm = document.getElementById("contactForm");
+
+            contactForm.addEventListener("submit", function (e) {
+                e.preventDefault(); // Previene el envío del formulario por defecto
+
+                const name = document.getElementById("name").value;
+                const phone = document.getElementById("phone").value;
+                const email = document.getElementById("email").value;
+                const schedule = document.getElementById("schedule").value;
+                const privacy = document.getElementById("privacy").checked;
+                const captcha = document.getElementById("captcha").value;
+
+                // Validación básica
+                if (name === "" || phone === "" || !privacy || captcha === "") {
+                    alert("Por favor, rellena todos los campos obligatorios.");
+                    return;
+                }
+
+                // Aquí puedes agregar lógica adicional como enviar los datos a un servidor
+
+                alert("Formulario enviado correctamente.");
+                contactForm.reset(); // Resetea el formulario después de enviarlo
+            });
+        });
+    </script>
+</body>
+
+</html>

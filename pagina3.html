@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Terapia Psicológica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/jpeg"
+        href="https://scontent.flpb1-2.fna.fbcdn.net/v/t39.30808-1/272764411_1119160732246558_8990868702955234015_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=H7Zb9p861wgQ7kNvgFn-BaN&_nc_ht=scontent.flpb1-2.fna&oh=00_AYC9cQn_4cI0pRd6MfprTI98o5JZ4hUwvrHqAeFidO5A2A&oe=666D95F0">
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 1rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        header nav ul li:hover {
+            transform: scale(1.1);
+            color: #f4f4f4;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li:hover a {
+            color: #f4f4f4;
+        }
+
+        h1,
+        h3 {
+            color: #ecf0f1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            max-width: 900px;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .options-list {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            width: 100%;
+            color: rgb(48, 48, 107);
+            margin-bottom: 1rem;
+        }
+
+        .options-list li {
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .options-list li:hover {
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .info-display {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        .info-display img {
+            max-width: 100%;
+            height: auto;
+            max-height: 600px;
+            border-radius: 10%;
+        }
+
+        footer {
+            background: #3f6d9c;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            filter: invert(100%);
+        }
+
+        .transparent-background {
+            color: black;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .transparent-background:hover {
+            transform: scale(102%);
+            transition: transform 0.5s;
+        }
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #scrollToTop:hover {
+            background: #555;
+            transform: scale(1.1);
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 4px;
+            transition: all 0.3s;
+        }
+
+        nav.active ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #333;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Vital - Mente</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pagina2.html">Sobre Nosotros</a></li>
+                <li><a href="pagina3.html">Servicios</a></li>
+                <li><a href="pagina4.html">Horarios</a></li>
+                <li><a href="pagina5.html">Reuniones y Eventos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="content-wrapper">
+            <main>
+                <h3 class="transparent-background">Terapias con las que contamos:</h3>
+                <br>
+                <ul class="options-list">
+                    <li id="li-individual">Terapia individual</li>
+                    <li id="li-pareja">Terapia de pareja</li>
+                    <li id="li-familiar">Terapia familiar</li>
+                    <li id="li-infantil">Terapia infantil y adolescente</li>
+                    <li id="li-sexual">Terapia sistémica para trastornos sexuales</li>
+                    <li id="li-duelo">Terapia sistémica para el duelo</li>
+                    <li id="li-asesoramiento">Asesoramiento psicológico</li>
+                </ul>
+            </main>
+        </div>
+
+        <div id="info-display" class="info-display"></div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <a href="https://www.facebook.com/profile.php?id=100031962143298" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Logo_Facebook_Blanco.png/640px-Logo_Facebook_Blanco.png"
+                    alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/vital_mentepodcast/?igsh=bHc0cTlsczFudXpw" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CIS-A2K_Instagram_Icon_%28Black%29.svg/640px-CIS-A2K_Instagram_Icon_%28Black%29.svg.png"
+                    alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com/@vitalmente3?_t=8mwxnmi2umL&_r=1" target="_blank">
+                <img src="tik-tok.png" alt="TikTok">
+            </a>
+            <a href="https://wa.me/59160100110?text=Hola%2C%20Me%20gustaría%20información%20de%20las%20consultas
+            " target="_blank">
+                <img src="toppng.com-white-whatsapp-n-256x256.png" alt="TikTok">
+            </a>
+        </div>
+    </footer>
+    <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+        
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const infoDisplay = document.getElementById('info-display');
+
+            const info = {
+                'li-individual': {
+                    img: 'https://selecciones.com.mx/wp-content/uploads/2022/06/motivos-para-ver-a-un-terapeuta.jpg',
+                    content: `<h2>Terapia Individual</h2>
+                              <p>La terapia individual ayuda a las personas a tratar problemas personales y emocionales.</p>
+                              <p>Ofrecemos un espacio seguro y confidencial para explorar tus sentimientos y mejorar tu bienestar.</p>`
+                },
+                'li-pareja': {
+                    img: 'https://universidadeuropea.com/resources/media/images/terapia-pareja-1200x630.original.jpg',
+                    content: `<h2>Terapia de Pareja</h2>
+                              <p>La terapia de pareja está diseñada para mejorar la comunicación y resolver conflictos entre parejas.</p>
+                              <p>Nuestro enfoque se basa en técnicas probadas para fortalecer la relación y construir una base de confianza y respeto.</p>`
+                },
+                'li-familiar': {
+                    img: 'https://www.terapify.com/blog/wp-content/uploads/2023/05/terapeuta-familia-sonriente-cerca-1.jpg',
+                    content: `<h2>Terapia Familiar</h2>
+                              <p>La terapia familiar trabaja con las dinámicas familiares para mejorar la relación entre los miembros.</p>
+                              <p>Nuestro objetivo es fomentar una comunicación abierta y resolver problemas familiares de manera constructiva.</p>`
+                },
+                'li-infantil': {
+                    img: 'https://www.ceepi.mx/wp-content/uploads/2018/10/B_115.jpg',
+                    content: `<h2>Terapia Infantil y Adolescente</h2>
+                              <p>La terapia infantil y adolescente aborda problemas emocionales y conductuales en niños y adolescentes.</p>
+                              <p>Proporcionamos apoyo especializado para ayudar a los jóvenes a superar desafíos y desarrollar habilidades saludables.</p>`
+                },
+                'li-sexual': {
+                    img: 'https://www.juliapascual.com/wp-content/uploads/que-es-el-duelo-psicologia.jpg',
+                    content: `<h2>Terapia sistémica para trastornos sexuales</h2>
+                              <p>La terapia sistémica para trastornos sexuales aborda las dificultades sexuales considerando no solo los síntomas individuales, sino también el contexto relacional y social. Esta terapia busca entender y mejorar las interacciones y dinámicas que pueden estar contribuyendo a los problemas sexuales. Se trabaja en la comunicación, la intimidad y la conexión emocional, ofreciendo estrategias efectivas para superar las barreras y mejorar la satisfacción sexual y el bienestar general.</p>`
+                },
+                'li-duelo': {
+                    img: 'https://img77.uenicdn.com/image/upload/v1580702438/category/shutterstock_1310214163.jpg',
+                    content: `<h2>Terapia de Duelo</h2>
+                              <p>El asesoramiento psicológico proporciona orientación y apoyo para resolver problemas específicos.</p>
+                              <p>Ofrecemos estrategias y herramientas efectivas para manejar el estrés, la ansiedad y otros problemas.</p>`
+                },
+                'li-asesoramiento': {
+                    img: 'https://lyskam.com/wp-content/uploads/2023/06/asesoramiento-empresarial.jpg',
+                    content: `<h2>Asesoramiento Psicológico</h2>
+                              <p>El asesoramiento psicológico proporciona orientación y apoyo para resolver problemas específicos.</p>
+                              <p>Ofrecemos estrategias y herramientas efectivas para manejar el estrés, la ansiedad y otros problemas.</p>`
+                }
+            };
+
+            document.querySelectorAll('.content-wrapper ul li').forEach(li => {
+                li.addEventListener('click', function () {
+                    const infoData = info[this.id];
+                    if (infoData) {
+                        infoDisplay.innerHTML = `<div class="transparent-background">
+                                                     <img src="${infoData.img}" alt="${this.textContent}">
+                                                     ${infoData.content}
+                                                 </div>`;
+                        infoDisplay.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

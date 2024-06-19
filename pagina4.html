@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horarios de Atención</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image"
+        href="https://scontent.flpb1-2.fna.fbcdn.net/v/t39.30808-1/272764411_1119160732246558_8990868702955234015_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=H7Zb9p861wgQ7kNvgFn-BaN&_nc_ht=scontent.flpb1-2.fna&oh=00_AYC9cQn_4cI0pRd6MfprTI98o5JZ4hUwvrHqAeFidO5A2A&oe=666D95F0">
+    <style>
+       body {
+    background-image: url('https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 1rem;
+    transition: transform 0.3s, color 0.3s;
+}
+
+header nav ul li:hover {
+    transform: scale(1.1);
+    color: #f4f4f4;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li:hover a {
+    color: #f4f4f4;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+}
+
+.texto {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.texto h3 {
+    margin-bottom: 10px;
+}
+
+nav {
+    margin-right: 40px;
+}
+
+.texto-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.texto-imagen img {
+    width: 150px;
+    height: 150px;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.image-gallery img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.blob-1 {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+}
+
+.blob-1:hover {
+    transform: scale(108%);
+    transition: transform 0.8s;
+    clip-path: polygon(50% 0%, 87.5% 25%, 87.5% 75%, 50% 100%, 12.5% 75%, 12.5% 25%);
+}
+
+footer {
+    background: #3f6d9c;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.footer a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    filter: invert(100%);
+}
+
+.reserva-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.reserva-button:hover {
+    background-color: #555;
+}
+
+.formulario-reserva {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffffde;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    color: #2d1b5e;
+}
+
+.formulario-reserva.show {
+    display: block;
+}
+
+.formulario-reserva h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.formulario-reserva label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.formulario-reserva input[type="text"],
+.formulario-reserva input[type="email"],
+.formulario-reserva input[type="tel"],
+.formulario-reserva input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.formulario-reserva button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.formulario-reserva button:hover {
+    background-color: #555555fd;
+}
+
+.oculto {
+    display: none;
+}
+
+.transparent-background {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.transparent-background:hover {
+    transform: scale(102%);
+    transition: transform 0.5s;
+}
+
+#scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: none;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scrollToTop:hover {
+    background: #555;
+    transform: scale(1.1);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 4px;
+    transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: #333;
+    }
+
+    nav.active ul {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .texto-imagen {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .texto-imagen img {
+        width: 150px;
+        height: 150px;
+        margin-top: 10px;
+    }
+
+    .formulario-reserva {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .reserva-button {
+        right: 10px;
+        bottom: 10px;
+        padding: 5px 10px;
+    }
+}
+ul{
+    list-style-type: none;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Vital - Mente</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pagina2.html">Sobre Nosotros</a></li>
+                <li><a href="pagina3.html">Servicios</a></li>
+                <li><a href="pagina4.html">Horarios</a></li>
+                <li><a href="pagina5.html">Reuniones y Eventos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-wrapper">
+        <main>
+            <h2 class="transparent-background">Horarios de Atencion</h2>
+            <div class="texto" class="transparent-background">
+                <h3 class="transparent-background">Psicología de pareja y familiar</h3>
+                <h5 class="transparent-background">Por El: lic. psic Alejandro Johan Sebastián Escalante Cordero</h5>
+                <div class="texto-imagen" class="transparent-background">
+                    <ul class="transparent-background">
+                        <li>Lunes: 9:00am - 5:00pm</li>
+                        <li>Martes: 9:00am - 5:00pm</li>
+                        <li>Miércoles: 9:00am - 5:00pm</li>
+                        <li>Jueves: 9:00am - 5:00pm</li>
+                        <li>Viernes: 9:00am - 5:00pm</li>
+                    </ul>
+                    <p></p>
+                    <img src="ceo.jpeg" alt="Imagen 1" class="blob-1">
+                </div>
+            </div>
+            <div class="texto">
+                <h3 class="transparent-background">Psicología de la educación y del desarrollo</h3>
+                <h5 class="transparent-background">Por El: lic. psic Alejandro Johan Sebastián Escalante Cordero</h5>
+                <div class="texto-imagen">
+                    <ul class="transparent-background">
+                        <li>Lunes: 9:00am - 5:00pm</li>
+                        <li>Martes: 9:00am - 5:00pm</li>
+                        <li>Miércoles: 9:00am - 5:00pm</li>
+                        <li>Jueves: 9:00am - 5:00pm</li>
+                        <li>Viernes: 9:00am - 5:00pm</li>
+                    </ul>
+                    <p></p>
+                    <img src="ceo.jpeg" alt="Imagen 2" class="blob-1">
+                </div>
+            </div>
+            <div class="texto">
+                <h3 class="transparent-background">Psicología clínica y de la salud</h3>
+                <h5 class="transparent-background">Por El: lic. psic Alejandro Johan Sebastián Escalante Cordero</h5>
+                <div class="texto-imagen">
+                    <ul class="transparent-background">
+                        <li>Lunes: 9:00am - 5:00pm</li>
+                        <li>Martes: 9:00am - 5:00pm</li>
+                        <li>Miércoles: 9:00am - 5:00pm</li>
+                        <li>Jueves: 9:00am - 5:00pm</li>
+                        <li>Viernes: 9:00am - 5:00pm</li>
+                    </ul>
+                    <p></p>
+                    <img src="ceo.jpeg" alt="Imagen 3" class="blob-1">
+                </div>
+            </div>
+            <div class="texto">
+                <h3 class="transparent-background">terapia sistémica para trastornos sexuales</h3>
+                <h5 class="transparent-background">Por El: lic. psic Alejandro Johan Sebastián Escalante Cordero</h5>
+                <div class="texto-imagen">
+                    <ul class="transparent-background">
+                        <li>Lunes: 8:00am - 12:00pm</li>
+                        <li>Miércoles: 8:00am - 12:00pm</li>
+                        <li>Viernes: 8:00am - 12:00pm</li>
+                    </ul>
+                    <p></p>
+                    <img src="ceo.jpeg" alt="Imagen 4" class="blob-1">
+                </div>
+            </div>
+            <button id="reservaButton" class="reserva-button">Reservar Cita</button>
+            <div id="formulario-reserva" class="formulario-reserva oculto">
+                <h4>Reservar cita</h4>
+                <form action="https://formsubmit.co/formulariocontactanosvm@gmail.com" target="_blank" method="POST">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                    <p>Seleccione la Especialidad:</p>
+                    <select id="especialidad" name="especialidad">
+                        <option value="pareja_familiar">Psicología de pareja y familiar</option>
+                        <option value="educacion_desarrollo">Psicología de la educación y del desarrollo</option>
+                        <option value="clinica_salud">Psicología clínica y de la salud</option>
+                        <option value="neuropsicologia">terapia sistémica para trastornos sexuales</option>
+                    </select>
+                    <br>
+                    <br>
+                    <button type="submit">Reservar</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <a href="https://www.facebook.com/profile.php?id=100031962143298" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Logo_Facebook_Blanco.png/640px-Logo_Facebook_Blanco.png"
+                    alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/vital_mentepodcast/?igsh=bHc0cTlsczFudXpw" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CIS-A2K_Instagram_Icon_%28Black%29.svg/640px-CIS-A2K_Instagram_Icon_%28Black%29.svg.png"
+                    alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com/@vitalmente3?_t=8mwxnmi2umL&_r=1" target="_blank">
+                <img src="tik-tok.png" alt="TikTok">
+            </a>
+            <a href="https://wa.me/59160100110?text=Hola%2C%20Me%20gustaría%20información%20de%20las%20consultas
+            " target="_blank">
+                <img src="toppng.com-white-whatsapp-n-256x256.png" alt="TikTok">
+            </a>
+        </div>
+    </footer>
+    <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    </script>
+    <script>
+        const reservaButton = document.getElementById('reservaButton');
+        const formularioReserva = document.getElementById('formulario-reserva');
+
+        reservaButton.addEventListener('click', () => {
+            formularioReserva.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

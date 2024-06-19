@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reuniones y Eventos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/jpeg">
+
+    <style>
+        body {
+            background-image: url(dreamlike-desert-6000x4558-16932.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Estilos para la cabecera */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        header h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 1rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        header nav ul li:hover {
+            transform: scale(1.1);
+            color: #f4f4f4;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li:hover a {
+
+            color: #f4f4f4;
+        }
+
+        /* Estilos para el contenido principal */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 2rem;
+            background: #fff;
+            margin: 1rem auto;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Cambia el valor alpha para ajustar la transparencia */
+            padding: 10px;
+            /* Ajusta el relleno según sea necesario */
+            border-radius: 5px;
+            /* Opcional: agrega bordes redondeados */
+        }
+
+        .content-wrapper h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .content-wrapper p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .content-wrapper .ceo {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Estilos para la lista de eventos */
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .event {
+            display: flex;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .event:hover {
+            transform: scale(1.05);
+        }
+
+        .event h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .event p {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .event button {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 10px 20px;
+
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .event button:hover {
+            background-color: #34495E;
+
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            background: #2C3E50;
+            /* azul marino */
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            filter: invert(100%);
+        }
+ /* Estilos para los campos de texto en formularios de reserva */
+ .formulario-reserva input[type="text"],
+    .formulario-reserva input[type="tel"] {
+        width: calc(100% - 20px); /* Ajusta el ancho según sea necesario */
+        padding: 10px; /* Ajusta el relleno interno */
+        margin-bottom: 10px; /* Espacio entre los campos */
+    }
+
+    /* Estilos adicionales si es necesario */
+    .formulario-reserva label {
+        margin-bottom: 5px; /* Espacio entre las etiquetas y los campos de texto */
+    }
+        .event img {
+            margin-right: 20px;
+            width: 25%;
+            max-width: 20%;
+            height: auto;
+            border-bottom: 1px solid #eee;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #scrollToTop:hover {
+            background: #555;
+            transform: scale(1.1);
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 4px;
+            transition: all 0.3s;
+        }
+
+        nav.active ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #333;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+        .event img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #eee;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+@media (max-width: 768px) {
+    .event {
+        flex-direction: column;
+    }
+}
+.animacion-exito {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.animacion-exito.show {
+    display: block;
+    animation: mostrar-exito 2s ease-out;
+}
+
+@keyframes mostrar-exito {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Vital - Mente</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pagina2.html">Sobre Nosotros</a></li>
+                <li><a href="pagina3.html">Servicios</a></li>
+                <li><a href="pagina4.html">Horarios</a></li>
+                <li><a href="pagina5.html">Reuniones y Eventos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-wrapper">
+        <h2>Reuniones y Eventos</h2>
+        <div class="event-list">
+            <div class="event">
+                <img src="https://i.pinimg.com/564x/98/11/c2/9811c2374d9254fea29b922dd3d3a2ff.jpg" alt="Imagen Evento 1">
+                <div class="event-content">
+                    <h3>Taller de Mindfulness</h3>
+                    <p>Únete a nuestro taller de mindfulness donde aprenderás técnicas de meditación y atención plena para reducir el estrés y mejorar tu bienestar mental.</p>
+                    <button  onclick="mostrarFormulario(this)">Reservar ahora</button>
+                    <div class="formulario-reserva" style="display: none;">
+                        <form onsubmit="enviarFormulario(event, this)">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                            <button type="submit">Enviar</button>
+                        </form>
+                        <div class="animacion-exito">
+                            <p>¡Reserva realizada con éxito!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="event">
+                <img src="https://i.pinimg.com/564x/64/be/4a/64be4a437ea58951fd33c2ae169f65c7.jpg"
+                    alt="Imagen Evento 1">
+                <div class="event-content">
+                    <h3>Sesión de Terapia de Grupo</h3>
+                    <p>Participa en nuestra sesión de terapia de grupo donde podrás compartir tus experiencias y recibir
+                        apoyo de otros miembros del grupo bajo la guía de un terapeuta profesional.</p>
+                    <button  onclick="mostrarFormulario(this)">Reservar ahora</button>
+                    <div class="formulario-reserva" style="display: none;">
+                        <form onsubmit="enviarFormulario(event, this)">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                            <button type="submit">Enviar</button>
+                        </form>
+                        <div class="animacion-exito">
+                            <p>¡Reserva realizada con éxito!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="event">
+                <img src="https://i.pinimg.com/564x/2e/91/78/2e9178794bfa17bbed6e76d6886d1bde.jpg"
+                    alt="Imagen Evento 1">
+                <div class="event-content">
+                    <h3>Conferencia: Estrategias para el Manejo del Estrés</h3>
+                    <p>Asiste a nuestra conferencia sobre estrategias efectivas para manejar el estrés en la vida
+                        diaria.
+                        Aprenderás técnicas prácticas y consejos útiles de expertos en salud mental.</p>
+                    <button  onclick="mostrarFormulario(this)">Reservar ahora</button>
+                    <div class="formulario-reserva" style="display: none;">
+                        <form onsubmit="enviarFormulario(event, this)">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                            <button type="submit">Enviar</button>
+                        </form>
+                        <div class="animacion-exito">
+                            <p>¡Reserva realizada con éxito!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer">
+                <a href="https://www.facebook.com/profile.php?id=100031962143298" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Logo_Facebook_Blanco.png/640px-Logo_Facebook_Blanco.png"
+                        alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/vital_mentepodcast/?igsh=bHc0cTlsczFudXpw" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CIS-A2K_Instagram_Icon_%28Black%29.svg/640px-CIS-A2K_Instagram_Icon_%28Black%29.svg.png"
+                        alt="Instagram">
+                </a>
+                <a href="https://www.tiktok.com/@vitalmente3?_t=8mwxnmi2umL&_r=1" target="_blank">
+                    <img src="tik-tok.png" alt="TikTok">
+                </a>
+                <a href="https://wa.me/59160100110?text=Hola%2C%20Me%20gustaría%20información%20de%20las%20consultas
+            " target="_blank">
+                <img src="toppng.com-white-whatsapp-n-256x256.png" alt="TikTok">
+            </a>
+            </div>
+        </footer>
+        <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+    const botonesReserva = document.querySelectorAll('.boton-reserva');
+    const animacionesExito = document.querySelectorAll('.animacion-exito');
+
+    botonesReserva.forEach((boton, index) => {
+        boton.addEventListener('click', function() {
+            animacionesExito[index].classList.add('show');
+            setTimeout(function() {
+                animacionesExito[index].classList.remove('show');
+            }, 2000); // 2000 milisegundos = 2 segundos
+        });
+    });
+});
+
+    </script>
+        <script src="script.js">
+            document.addEventListener("DOMContentLoaded", function () {
+                const registerButtons = document.querySelectorAll(".event button");
+
+                registerButtons.forEach(button => {
+                    button.addEventListener("click", function () {
+                        alert("Te has registrado para este evento.");
+                    });
+                });
+            });
+        </script>
+        <script>
+    function mostrarFormulario(button) {
+        // Ocultar otros formularios abiertos si es necesario
+        ocultarFormularios();
+        // Mostrar el formulario del evento actual
+        const formulario = button.nextElementSibling;
+        formulario.style.display = 'block';
+    }
+
+    function ocultarFormularios() {
+        const formularios = document.querySelectorAll('.formulario-reserva');
+        formularios.forEach(formulario => {
+            formulario.style.display = 'none';
+        });
+    }
+
+    function enviarFormulario(event, form) {
+    event.preventDefault(); // Evita que se recargue la página al enviar el formulario
+
+    // Validar el campo de nombre
+    const nombre = form.querySelector('#nombre').value.trim(); // Obtener el valor y quitar espacios en blanco al inicio y al final
+    if (nombre === '') {
+        alert('Por favor, ingresa tu nombre.');
+        return; // Detener el envío del formulario si el nombre está vacío
+    }
+
+    // Validar el campo de teléfono para que solo acepte números
+    const telefono = form.querySelector('#telefono').value.trim(); // Obtener el valor y quitar espacios en blanco al inicio y al final
+    if (!(/^\d+$/.test(telefono))) {
+        alert('Por favor, ingresa un número de teléfono válido (solo números).');
+        return; // Detener el envío del formulario si el teléfono no es válido
+    }
+
+    // Mostrar mensaje de éxito y ocultar formulario
+    const exito = form.nextElementSibling; // El div con clase 'animacion-exito'
+    exito.classList.add('show');
+    form.style.display = 'none'; // Oculta el formulario
+    setTimeout(function() {
+        exito.classList.remove('show');
+        form.reset(); // Opcional: reiniciar el formulario después de enviar
+    }, 2000); // 2000 milisegundos = 2 segundos
+}
+
+</script>
+
+        
+</body>
+
+</html>
